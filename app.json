@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "rushApp",
+    "slug": "rushApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "rushApp"
+}
