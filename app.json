@@ -5,7 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "89f2fb33-195d-4825-be1a-71e8f23c1115"
+      }
+    }
   },
   "name": "rushApp"
 }
