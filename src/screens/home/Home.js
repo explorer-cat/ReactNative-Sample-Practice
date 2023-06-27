@@ -52,10 +52,7 @@ const Home = ({navigation}) => {
                     <MyAssets/>
                 </View>
                 <DivLine height = {8}/>
-                <View>
-                    <MainIndex />
-                </View>
-                <View style={{height:1000,padding:24}}>
+                <View style={{height:1000}}>
                     <TabViewExample />
                 </View>
             </ScrollView>

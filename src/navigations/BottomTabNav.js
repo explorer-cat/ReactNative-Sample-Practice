@@ -76,7 +76,7 @@ const Tabs = () => {
                 name="InvestmentTab"
                 component={CryptoInvest}
                 options={{
-                    tabBarLabel: '투자내역',
+                    tabBarLabel: '예치',
                     tabBarIcon: ({focused, color, size}) => {
                         return (
                             <MaterialCommunityIcons name={focused ? "chart-box-plus-outline" : "chart-box-outline"}

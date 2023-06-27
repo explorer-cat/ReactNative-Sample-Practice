@@ -198,7 +198,7 @@ const My = ({navigation}) => {
                         </ConntentStatusAPIBtn>
                 }
             </LoginContainer>
-            <DivLine height={8}/>
+            <DivLine height={4}/>
 
             <AppOptionContainer>
 
@@ -221,7 +221,7 @@ const My = ({navigation}) => {
                     <Text>인증보안</Text>
                 </AppOptionButton>
             </AppOptionContainer>
-            <DivLine height={8}/>
+            <DivLine height={4}/>
             {/*설정 리스트*/}
 
 
@@ -288,7 +288,7 @@ const My = ({navigation}) => {
 
             </NoticeSummaryContainer>
 
-            <DivLine height={8}/>
+            <DivLine height={4}/>
             <MyFunctionListConatiner>
                 {functionList.map((value, index) => {
                     return (

@@ -14,7 +14,7 @@ import IndexLineChart from "../chart/IndexLineChart";
 const Container = styled.View`
   width: 130px;
   height: 140px;
-  background-color: #EBE9E9;
+  background-color: ${(props) => props.theme.buttonBackground};
   margin: 0px 5px;
   padding: 16px;
   border-radius: 12px;

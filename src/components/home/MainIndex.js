@@ -7,9 +7,9 @@ import IndexChart from "./IndexChart";
 import {DARK_INACTIVE, LIGHT_ACTIVE, LIGHT_BACKGROUND, LIGHT_INACTIVE} from "../../theme/palette";
 
 const Container = styled.View`
-  flex: 1;
+  height: 250px;
+  //background-color: red;
   flex-direction: column;
-  padding: 20px 0px 20px 24px;
 `
 
 const TitleView = styled.View`
@@ -24,7 +24,7 @@ const TitleView = styled.View`
 const AllIndexBtn = styled.TouchableOpacity`
   align-items: center;
   flex-direction: row;
-  margin-right: 15px;
+  //margin-right: 8px;
 `
 
 const AllIndexBtnImg = styled.View`
@@ -33,6 +33,8 @@ const AllIndexBtnImg = styled.View`
 
 const IndexContainer = styled.ScrollView`
   flex-direction: row;
+  //background-color: #00008B;
+  margin-left: -5px;
 `
 const MainIndex = () => {
 
@@ -50,7 +52,7 @@ const MainIndex = () => {
         <Container>
             <TitleView>
                 <View>
-                    <Text style={{fontSize: 20, fontWeight: 'bold'}}>주요 지수</Text>
+                    <Text style={{fontSize: 16, fontWeight: 'bold'}}>주요 지수</Text>
                 </View>
                 <View>
                     <AllIndexBtn onPress = {() => {navigation.navigate("MainStack", {screen : "IndexListScreen"})}}>
