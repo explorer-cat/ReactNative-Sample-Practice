@@ -56,16 +56,12 @@ const ProfileDetailImageContainer = styled.View`
 const ConntentStatusAPIBtn = styled.TouchableHighlight`
   height: 40px;
   justify-content: center;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 8px;
   background-color: ${(props) => props.theme.buttonBackground};;
 `
 const ConnectStatusAPIBtn = styled.View`
-  //height: 40px;
-  //justify-content: center;
-  //padding: 8px;
-  //border-radius: 8px;
-    // background-color: ${(props) => props.theme.buttonBackground};
+
 `
 
 
@@ -172,8 +168,8 @@ const My = ({navigation}) => {
                     {
 
                         isLoggiend === null ?
-                            <Text style={{fontSize: 22, fontWeight: 'bold'}}>지금 로그인 하기</Text>
-                            : <Text style={{fontSize: 24, fontWeight: 'bold'}}>{isLoggiend.name} 님</Text>
+                            <Text style={{fontSize: 22, fontFamily : lightTheme.fonts.bold}}>지금 로그인 하기</Text>
+                            : <Text style={{fontSize: 24, fontFamily : lightTheme.fonts.bold}}>{isLoggiend.name} 님</Text>
                     }
 
                     <ProfileDetailImageContainer>
@@ -193,7 +189,7 @@ const My = ({navigation}) => {
                             onPress={() => alert("dd")}
                         >
                             <ConnectStatusAPIBtn>
-                                <Text>API 연결 정보</Text>
+                                <Text style = {{fontFamily : lightTheme.fonts.regular}}>API 연결 정보</Text>
                             </ConnectStatusAPIBtn>
                         </ConntentStatusAPIBtn>
                 }
@@ -209,16 +205,16 @@ const My = ({navigation}) => {
                 {/*                    }>*/}
                 <AppOptionButton activeOpacity = {1}  onPress = {()=> alert("알림 설정")}>
                     <Image source = {require("../../../assets/alert.png")}  style = {{marginBottom:8}}/>
-                    <Text>알림 설정</Text>
+                    <Text style = {{fontFamily : lightTheme.fonts.regular}}>알림 설정</Text>
                 </AppOptionButton >
                 {/*</TouchableHighlight>*/}
                 <AppOptionButton activeOpacity={1}  onPress = {()=> alert("화면 설정")}>
                     <Image source = {require("../../../assets/screen.png")}  style = {{marginBottom:8}}/>
-                    <Text>화면 설정</Text>
+                    <Text style = {{fontFamily : lightTheme.fonts.regular}}>화면 설정</Text>
                 </AppOptionButton>
                 <AppOptionButton activeOpacity = {1} onPress = {()=> alert("인증 보안")}>
                     <Image source = {require("../../../assets/lock.png")}  style = {{marginBottom:8}}/>
-                    <Text>인증보안</Text>
+                    <Text style = {{fontFamily : lightTheme.fonts.regular}}>인증보안</Text>
                 </AppOptionButton>
             </AppOptionContainer>
             <DivLine height={4}/>
@@ -229,17 +225,17 @@ const My = ({navigation}) => {
 
                 <NoticeSummanryTitleContainer>
                     <View>
-                        <Text style={{fontSize: 18, fontWeight: 'bold'}}>공지사항</Text>
+                        <Text style={{fontSize: 18, fontFamily : lightTheme.fonts.semibold}}>공지사항</Text>
                     </View>
 
                     <TouchableOpacity activeOpacity={1} style={{flexDirection: 'row', alignItems: 'center'}} onPress={
                         () => navigation.navigate("MyStack", {screen: "NoticeScreen"})
                     }>
-                        <Text style={{fontSize: 14 ,color : lightTheme.moreViewButton}}>더보기</Text>
+                        <Text style={{fontSize: 12 ,fontFamily : lightTheme.fonts.semibold, color : lightTheme.moreViewButton}}>더보기</Text>
                         <MaterialCommunityIcons
                             // style = {{${Platform.OS === 'android' && 'margin-top: 4px'}}}
                             name="chevron-right"
-                            size={20}
+                            size={16}
                             color={lightTheme.moreViewButton}/>
                     </TouchableOpacity>
                 </NoticeSummanryTitleContainer>
@@ -248,7 +244,7 @@ const My = ({navigation}) => {
                     {boardSummaryList.notice.map((value, index) => {
                         return (
                             <View key = {index} style={{height: 32, justifyContent: 'center'}}>
-                                <Text style={{fontSize: 15}}>{value.title}</Text>
+                                <Text style={{fontSize: 14, fontFamily : lightTheme.fonts.regular}}>{value.title}</Text>
                             </View>
                         )
                     })}
@@ -261,17 +257,17 @@ const My = ({navigation}) => {
             <NoticeSummaryContainer>
                 <NoticeSummanryTitleContainer>
                     <View>
-                        <Text style={{fontSize: 18, fontWeight: 'bold'}}>이벤트</Text>
+                        <Text style={{fontSize: 18, fontFamily : lightTheme.fonts.semibold}}>이벤트</Text>
                     </View>
 
                     <TouchableOpacity activeOpacity={1} style={{flexDirection: 'row', alignItems: 'center'}} onPress={
                         () => navigation.navigate("MyStack", {screen: "EventScreen"})
                     }>
-                        <Text style={{fontSize: 14,color : lightTheme.moreViewButton}}>더보기</Text>
+                        <Text style={{fontSize: 12,fontFamily : lightTheme.fonts.semibold, color : lightTheme.moreViewButton}}>더보기</Text>
                         <MaterialCommunityIcons
                             // style = {{${Platform.OS === 'android' && 'margin-top: 4px'}}}
                             name="chevron-right"
-                            size={20}
+                            size={16}
                             color={lightTheme.moreViewButton}/>
                     </TouchableOpacity>
                 </NoticeSummanryTitleContainer>
@@ -280,7 +276,7 @@ const My = ({navigation}) => {
                     {boardSummaryList.event.map((value, index) => {
                         return (
                             <View key = {index} style={{height: 32, justifyContent: 'center'}}>
-                                <Text style={{fontSize: 15}}>{value.title}</Text>
+                                <Text style={{fontSize: 14, fontFamily : lightTheme.fonts.regular}}>{value.title}</Text>
                             </View>
                         )
                     })}
@@ -302,7 +298,7 @@ const My = ({navigation}) => {
                                 <View>
                                     <Text style={{
                                         fontSize: 16,
-                                        fontWeight: 500,
+                                        fontFamily: lightTheme.fonts.semibold,
                                         color: value.component === 'logout' ? LIGHT_INACTIVE : LIGHT_ACTIVE
                                     }}>{value.title}</Text>
                                 </View>

@@ -10,6 +10,7 @@ import {
     StackedBarChart
 } from "react-native-chart-kit";
 import IndexLineChart from "../chart/IndexLineChart";
+import {lightTheme} from "../../styles/global";
 
 const Container = styled.View`
   width: 130px;
@@ -34,13 +35,13 @@ const IndexChart = ({indexData}) => {
         <Container>
             <ContentView>
                 <View style={{marginBottom: 4}}>
-                    <Text style={{fontSize: 12, fontWeight: 600}}>{indexData.name}</Text>
+                    <Text style={{fontSize: 12, fontFamily : lightTheme.fonts.semibold}}>{indexData.name}</Text>
                 </View>
                 <View style={{marginBottom: 2}}>
-                    <Text style={{fontSize: 15, fontWeight: 700}}>{indexData.point}</Text>
+                    <Text style={{fontSize: 15,fontFamily : lightTheme.fonts.semibold}}>{indexData.point}</Text>
                 </View>
                 <View>
-                    <Text style={{fontSize: 12, fontWeight: 400, color: 'blue'}}>-21.92 ({indexData.rate})</Text>
+                    <Text style={{fontSize: 12, fontFamily : lightTheme.fonts.semibold, color: 'blue'}}>-21.92 ({indexData.rate})</Text>
                 </View>
                 <ChartView>
                     <IndexLineChart chartData = {indexData.data} />

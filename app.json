@@ -1,5 +1,6 @@
 {
   "expo": {
+
     "name": "rushApp",
     "slug": "rushApp",
     "version": "1.0.0",
@@ -12,5 +13,8 @@
       }
     }
   },
+  "assets": [
+    "assets/fonts"
+  ],
   "name": "rushApp"
 }

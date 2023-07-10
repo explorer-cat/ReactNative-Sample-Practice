@@ -8,7 +8,7 @@ import styled from "styled-components";
 const HeaderContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin: 8px 12px 0px 12px;
+  margin: 0px 12px 0px 12px;
 `
 
 const LogoContainer = styled.View`

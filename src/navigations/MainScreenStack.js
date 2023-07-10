@@ -19,6 +19,8 @@ import BackBtn from "../components/BackBtn";
 import {darkTheme, lightTheme} from "../styles/global";
 import styled from "styled-components";
 import IndexListScreen from "../screens/home/IndexListScreen";
+import ConnectMyWalletScreen from "../screens/home/ConnectMyWalletScreen";
+import TestScreen from "../screens/home/TestScreen";
 // import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createNativeStackNavigator();
@@ -51,6 +53,15 @@ function MainScreenStack({navigation: {navigate}}) {
                               }
                           })}
                           component={IndexListScreen}/>
+            <Stack.Screen name = "ConnectMyWalletScreen"
+                          options={({route, navigation, back}) => ({
+                              title: '내 자산 연결',
+                              headerBackTitle: '내 자산 연결',
+                              headerLeft : () => {
+                                  return (<BackBtn navigation={navigation}/>)
+                              }
+                          })}
+                          component={ConnectMyWalletScreen}/>
             <Stack.Screen name="SettingScreen"
                           options={({route, navigation, back}) => ({
                               title: '설정',

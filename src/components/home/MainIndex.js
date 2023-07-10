@@ -5,6 +5,7 @@ import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {useNavigation} from "@react-navigation/native";
 import IndexChart from "./IndexChart";
 import {DARK_INACTIVE, LIGHT_ACTIVE, LIGHT_BACKGROUND, LIGHT_INACTIVE} from "../../theme/palette";
+import {lightTheme} from "../../styles/global";
 
 const Container = styled.View`
   height: 250px;
@@ -52,18 +53,18 @@ const MainIndex = () => {
         <Container>
             <TitleView>
                 <View>
-                    <Text style={{fontSize: 16, fontWeight: 'bold'}}>주요 지수</Text>
+                    <Text style={{fontSize: 16,fontFamily : lightTheme.fonts.bold}}>주요 지수</Text>
                 </View>
                 <View>
                     <AllIndexBtn onPress = {() => {navigation.navigate("MainStack", {screen : "IndexListScreen"})}}>
                         <View>
-                            <Text style={{fontSize: 15, color:DARK_INACTIVE , marginRight : 4}}>전체 보기</Text>
+                            <Text style={{fontSize: 12, fontFamily : lightTheme.fonts.regular, color:DARK_INACTIVE , marginRight : 4}}>전체 보기</Text>
                         </View>
                         <AllIndexBtnImg>
                             <MaterialCommunityIcons
                                 // style = {{${Platform.OS === 'android' && 'margin-top: 4px'}}}
                                 name = "chevron-right"
-                                size = {20}
+                                size = {16}
                                 color = {DARK_INACTIVE}/>
                         </AllIndexBtnImg>
                     </AllIndexBtn>
@@ -82,6 +83,11 @@ const MainIndex = () => {
                     )
                 })}
             </IndexContainer>
+            <View style = {{alignItems : 'flex-end'}}>
+                <Text style = {{color:DARK_INACTIVE, fontSize:12, fontFamily : lightTheme.fonts.regular}}>
+                    2023.06.23 23:12 기준
+                </Text>
+            </View>
 
         </Container>
     )

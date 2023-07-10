@@ -18,13 +18,15 @@ const TitleContainer = styled.View`
 
 const TitleText = styled.Text`
   font-size: 18px;
-  font-weight: bold;
+  font-family: ${(props) => props.theme.fonts.bold};
   margin-bottom: 4px;
+  
 `
 
 const CreatedText = styled.Text`
   font-size: 12px;
   color: ${(props) => props.theme.subTextColor}
+  font-family: ${(props) => props.theme.fonts.regular};
 `
 
 const ContentContainer = styled.ScrollView`
@@ -50,7 +52,7 @@ const Post = ({navigation, route}) => {
             <DivLine height={2}/>
 
             <ContentContainer>
-                <Text>
+                <Text style = {{fontFamily: lightTheme.fonts.regular}}>
                     {data.content}
                 </Text>
             </ContentContainer>

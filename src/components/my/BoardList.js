@@ -23,13 +23,15 @@ const PostTitleContainer = styled.View`
 `
 
 const PostTitleText = styled.Text`
-  font-size: 15px;
+  font-size: 14px;
   margin: 4px;
+  font-family: ${(props) => props.theme.fonts.regular};
 `
 
 const PostDateText = styled.Text`
   font-size: 12px;
   margin: 4px;
+  font-family: ${(props) => props.theme.fonts.regular};
   color: ${(props) => props.theme.moreViewButton};
 
 `
