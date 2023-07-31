@@ -6,9 +6,16 @@ import {DARK_INACTIVE, LIGHT_ACTIVE} from "../../theme/palette";
 import styled from "styled-components";
 
 const HeaderContainer = styled.View`
+  //flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 12px 0px 12px;
+  background-color : white;
+  hegiht: 100px;
+`
+
+const HeaderView = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin: 0px 12px 0px 12px;
 `
 
 const LogoContainer = styled.View`
@@ -25,26 +32,28 @@ function HomeHeader({isDark, focused, color, navigation}) {
     let imagePath = require('../../../assets/Logo.png');
 
     return (
-        <SafeAreaView>
-            <HeaderContainer>
-                <LogoContainer>
-                    <LogoImage
-                        // style
-                        source={require('../../../assets/Logo.png')}
-                    />
-                </LogoContainer>
-                <View>
-                    <MaterialCommunityIcons
-                        style={{marginTop: 8, marginRight: 4}}
-                        onPress={() => {
-                            navigation.navigate("MainStack", {screen: "SettingScreen"})
-                            // navigation.navigate("SettingScreen");
-                        }}
-                        name="cog-outline" color={isDark ? DARK_INACTIVE : LIGHT_ACTIVE} size={28}
-                    />
-                </View>
-            </HeaderContainer>
-        </SafeAreaView>
+        <HeaderContainer>
+            <SafeAreaView>
+                <HeaderView>
+                    <LogoContainer>
+                        <LogoImage
+                            // style
+                            source={require('../../../assets/Logo.png')}
+                        />
+                    </LogoContainer>
+                    <View>
+                        <MaterialCommunityIcons
+                            style={{marginTop: 8, marginRight: 4}}
+                            onPress={() => {
+                                navigation.navigate("MainStack", {screen: "SettingScreen"})
+                                // navigation.navigate("SettingScreen");
+                            }}
+                            name="cog-outline" color={isDark ? DARK_INACTIVE : LIGHT_ACTIVE} size={28}
+                        />
+                    </View>
+                </HeaderView>
+            </SafeAreaView>
+        </HeaderContainer>
     );
 }
 

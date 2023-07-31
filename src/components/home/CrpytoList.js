@@ -13,7 +13,7 @@ import MyAssets from "./MyAssets";
 import HomeTabView from "./HomeTabBar";
 
 const Container = styled.View`
-  height: 1000px;
+  //height: 1000px;
   //background-color: red;
   background-color: ${(props) => props.theme.mainBgColor};
   flex-direction: column;
@@ -21,16 +21,16 @@ const Container = styled.View`
 const CryptoList = () => {
 
     return (
-        <Container>
-            <View style = {{padding:25}}>
-                <MainIndex />
-            </View>
-            <DivLine height={8} />
-            <View style={{ flex: 1 }}>
+        <>
+            <View>
                 <CryptoListTabBar />
-                {/*<Example />*/}
             </View>
-        </Container>
+            {/*<DivLine height={8} />*/}
+            {/*<View style={{ flex: 1 }}>*/}
+            {/*    <CryptoListTabBar />*/}
+            {/*    /!*<Example />*!/*/}
+            {/*</View>*/}
+        </>
         // </View>
     )
 

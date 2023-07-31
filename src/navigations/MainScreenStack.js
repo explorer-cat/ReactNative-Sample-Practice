@@ -55,8 +55,8 @@ function MainScreenStack({navigation: {navigate}}) {
                           component={IndexListScreen}/>
             <Stack.Screen name = "ConnectMyWalletScreen"
                           options={({route, navigation, back}) => ({
-                              title: '내 자산 연결',
-                              headerBackTitle: '내 자산 연결',
+                              title: '샘플',
+                              headerBackTitle: '샘플',
                               headerLeft : () => {
                                   return (<BackBtn navigation={navigation}/>)
                               }

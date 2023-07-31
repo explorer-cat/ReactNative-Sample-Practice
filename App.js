@@ -9,11 +9,33 @@ import {loadUpbitListingInfo} from "./src/exchangeAPI/upbit";
 import {createTwoButtonAlert,createOneButtonAlert} from "./src/components/alert/PublicAlert";
 import {Provider, useDispatch, useSelector} from 'react-redux'
 import store from './src/modules/store/store';
+// import * as Location from 'expo-location';
 
 export default function App() {
 
     const isDark = useColorScheme() === "dark";
     const [loading,setLoading] = useState(false);
+    //
+    // const [location, setLocation] = useState();
+    // const [ok, setOk] = useState(true);
+
+    // const ask = async () => {
+    //     const {granted} = await Location.requestForegroundPermissionsAsync();
+    //     if(!granted) {
+    //         setOk(false);
+    //     }
+    //
+    //     const { coords:{latitude, longitude} } = await Location.getCurrentPositionAsync({accuracy: 5});
+    //
+    //     const location = await Location.reverseGeocodeAsync({latitude, longitude}, {useGoogleMaps: false});
+    //     console.log(console.log(location[0].city))
+    //
+    // };
+    //
+    // useEffect(() => {
+    //     ask();
+    // }, [])
+
     const fetchFonts = () => {
         return new Promise((resolve,reject) => {
             const font = Font.loadAsync({

@@ -1,92 +1,118 @@
-import React, {useState, useCallback, useEffect, useMemo} from "react";
-import {View, Text, StyleSheet, TouchableOpacity, Image, Switch} from "react-native";
-import styled from "styled-components";
-import axios from 'axios';
-import {useSelector} from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Dimensions,StyleSheet } from 'react-native';
+import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import Animated, {
+    useSharedValue,
+    useAnimatedGestureHandler,
+    useAnimatedStyle,
+    withSpring,
+    runOnJS,
+    withTiming,
+    withDecay,
+    withDelay,
+    withSequence,
+} from 'react-native-reanimated';
+import {Calendar, LocaleConfig} from 'react-native-calendars';
 
-const Container = styled.View`
-  //padding : 20px;
-  //justify-content: center;
-  flex: 1;
-  background-color: white;
-  //flex-direction: column;
-  //align-items: center;
-    //background-color: ${(props) => props.theme.mainBgColor};
-`
+const ConnectMyWalletScreen = () => {
+    const [selected, setSelected] = useState('');
 
+    const screenHeight = Dimensions.get('screen').height;
+    const screenWidth = Dimensions.get('screen').width;
+    const [open, setOpen] = useState(false);
+    //플러스 버튼 클릭시 열리는 백그라운드 뷰
+    const animation = useSharedValue(200); // Default height when closed
+    const openGestureY = 200;
+    const minHeight = 400; // Set the maximum height the view can expand to
+    const maxHeight = 700; // Set the maximum height the view can expand to
+    const gestureHeight = -100; //얼만큼 손을 올려야지 올라갈건지
 
-function calculate() {
-    return 10;
-}
-
-
-const ConnectMyWalletScreen = ({navigation: {navigate}}) => {
-    const [number, setNumber] = useState(0);
-    const [isKorea, setIsKorea] = useState(true);
-    const upbitListing = useSelector(state => state.upbitListingCoin);
-    const [filterData, setFilterData] = useState([]);
-
-    // const findKRWpair = useMemo(() => {
-    //     let result = []
-    //     console.log("findKRWpair()")
-    //     for (const key in upbitListing.KRW_MARKET) {
-    //         if (upbitListing.KRW_MARKET[key].korean_name.includes('체')) {
-    //             result.push(key)
-    //         }
-    //     }
-    //     return result;
-    // },[filterData])
-
-
-    //그냥 함수
-    const findKRWpair = () => {
-        console.log("findKRWpair()")
-        let result = []
-        for (const key in upbitListing.KRW_MARKET) {
-            if (upbitListing.KRW_MARKET[key].korean_name.includes('이')) {
-                result.push(<View key = {upbitListing.KRW_MARKET[key].korean_name.toString()}><Text>{upbitListing.KRW_MARKET[key].korean_name}</Text></View>)
-            }
-        }
-        return result;
-    }
-
-    //useMemo를 사용해서 최적화
-    // const findKRWpair = useMemo(() => {
-    //     console.log("findKRWpair()")
-    //     let result = []
-    //     for (const key in upbitListing.KRW_MARKET) {
-    //         if (upbitListing.KRW_MARKET[key].korean_name.includes('체')) {
-    //             result.push(<View key = {upbitListing.KRW_MARKET[key].korean_name.toString()}><Text>{upbitListing.KRW_MARKET[key].korean_name}</Text></View>)
-    //         }
-    //     }
-    //     return result;
-    // },[filterData])
 
     useEffect(() => {
-        // 뭔가 오래 걸리는 작업
-        // setFilterData(findKRWpair())
-    }, [])
+        if (open) {
+            animation.value = withSpring(maxHeight, { damping: 100 });
+        } else {
+            animation.value = withSpring(minHeight, { damping: 100});
+        }
+    }, [open]);
 
+    const onGestureEvent = useAnimatedGestureHandler({
+        onStart: (_, ctx) => {
+            ctx.startHeight = animation.value;
+        },
+        onActive: (event, ctx) => {
+            let newHeight = ctx.startHeight - event.translationY;
+            if (newHeight > maxHeight) {
+                newHeight = maxHeight;
+            }
+            if (newHeight < minHeight) {
+                newHeight = minHeight;
+            }
+            animation.value = newHeight;
+        },
+        onEnd: (event) => {
+            if (event.translationY < gestureHeight || animation.value > screenHeight - openGestureY) {
+                animation.value = withTiming(maxHeight, { duration: 300 });
+                runOnJS(setOpen)(true);
+            } else {
+                runOnJS(setOpen)(false);
+                if (animation.value !== maxHeight && animation.value !== openGestureY) {
+                    animation.value = withTiming(minHeight, { duration: 300 });
+                }
+            }
+        },
+    });
+
+    const boxStyle = useAnimatedStyle(() => {
+        return {
+            height: animation.value,
+        };
+    });
 
 
 
     return (
-        <Container>
-            <View style={{flexDirection: 'row'}}>
-                {/*   function ->  {findKRWpair()}*/}
-                {findKRWpair()}
-            {/*   useMemo ->  {findKRWpair}*/}
+        <>
+            <View style={{ flex: 1}}>
+                <Calendar
+                    onDayPress={day => {
+                        setSelected(day.dateString);
+                    }}
+                    markedDates={{
+                        [selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}
+                    }}
+                />
             </View>
-            <View>
-                <TouchableOpacity onPress={() => {
-                    setNumber(number + 1)
-                }}>
-                    <Text>{number}</Text>
-                </TouchableOpacity>
+            <View style={{ position: 'absolute', zIndex: 99, bottom: 0, backgroundColor: 'white' ,borderTopWidth:1,borderColor:'#C9C9C9'}}>
+                <PanGestureHandler onGestureEvent={onGestureEvent}>
+                    <Animated.View style={[boxStyle, styles.mySummaryModal, { width: screenWidth}]}>
+                        <View style = {{padding:12,alignItems:'center'}}>
+                            <View style = {{width:50,height:5,backgroundColor:'#C9C9C9',borderRadius:8}}>
+
+                            </View>
+                        </View>
+                        <View style={{ padding: 20 }}>
+                            <Text></Text>
+                        </View>
+                    </Animated.View>
+                </PanGestureHandler>
             </View>
-        </Container>
-    )
-}
+        </>
+    );
+};
+
+
+const styles = StyleSheet.create({
+    summaryBox : {
+        flex:1,
+        backgroundColor:'red'
+
+
+    },
+    mySummaryModal : {
+
+    }
+});
 
 
 export default ConnectMyWalletScreen;

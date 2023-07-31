@@ -62,7 +62,6 @@ export const lightTheme = {
 
 
 export const globalStyles = StyleSheet.create({
-
     container: {
         padding: 24,
         flex: 1,
@@ -74,6 +73,17 @@ export const globalStyles = StyleSheet.create({
     paragraph: {
         marginVerical: 8,
         lineHeight: 20,
+    },
+    fontRegular : {
+        fontFamily:'Pretendard-Regular',
+    },
+    fontMedium : {
+        fontFamily:'Pretendard-Medium',
+    },
+    fontSemiBold : {
+        fontFamily:'Pretendard-SemiBold',
+    },
+    fontBold : {
+        fontFamily:'Pretendard-Bold',
     }
-
 });

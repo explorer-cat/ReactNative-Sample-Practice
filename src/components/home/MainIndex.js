@@ -74,7 +74,7 @@ const MainIndex = () => {
                             showsHorizontalScrollIndicator={false} //수평 표시기 보여줌여부
                             onMomentumScrollEnd={
                                 () => {
-                                    console.log('스크롤 끝까지 됐음. 여기서 더 보여 주고싶은경우 처리하셈')
+                                    // console.log('스크롤 끝까지 됐음. 여기서 더 보여 주고싶은경우 처리하셈')
                                 }
                             }>
                 {indexList.map((value, index, array) => {

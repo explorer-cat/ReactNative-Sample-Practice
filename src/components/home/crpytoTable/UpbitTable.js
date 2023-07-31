@@ -65,7 +65,7 @@ const UpbitTable = () => {
     }
 
     useEffect(() => {
-        console.log(upbitListing)
+        // console.log(upbitListing)
     },[])
 
 
